@@ -1,10 +1,10 @@
-import SideMenu from "./components/SideMenu";
+import Rooms from "./components/Rooms";
 import Chat from "./components/Chat";
 
 function App() {
   return (
     <div className="App">
-      <SideMenu />
+      <Rooms />
       <Chat />
     </div>
   );
