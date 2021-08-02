@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 require("./config/dbConfig");
 
 const Room = require("./models/room");
@@ -7,6 +8,7 @@ const Room = require("./models/room");
 const app = express();
 
 app.use(bodyParser.json());
+app.use(cors());
 
 app.get("/", (req, res) => {
   Room.find({}, (err, rooms) => {
