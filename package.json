@@ -1,19 +1,23 @@
 {
-  "name": "realtimechat",
+  "name": "realtimechat_root",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "dependencies": {
+    "concurrently": "^6.2.0"
+  },
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "concurrently \"cd server && npm run dev\" \"cd client && npm start\"",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DimoDimchev/RealTimeChat.git"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "express": "^4.17.1",
-    "mongoose": "^5.13.5"
+  "bugs": {
+    "url": "https://github.com/DimoDimchev/RealTimeChat/issues"
   },
-  "devDependencies": {
-    "nodemon": "^2.0.12"
-  }
+  "homepage": "https://github.com/DimoDimchev/RealTimeChat#readme"
 }
