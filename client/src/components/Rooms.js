@@ -10,7 +10,7 @@ const Rooms = ({ rooms, setRooms }) => {
       setRooms(data);
     };
     getRooms();
-  }, []);
+  });
 
   return (
     <div className="side-menu">
