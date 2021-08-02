@@ -8,6 +8,14 @@ const app = express();
 
 app.use(bodyParser.json());
 
+app.get("/", (req, res) => {
+  Room.find({}, (err, rooms) => {
+    if (err) return console.log(err);
+    res.json(rooms);
+  });
+});
+
+// create a new room
 app.post("/rooms", (req, res) => {
   let roomName = req.body["roomName"];
   let generatedRoom = new Room({ name: roomName });
