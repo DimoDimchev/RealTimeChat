@@ -18,3 +18,11 @@ body {
   flex-basis: 100%;
   text-align: center;
 }
+
+.rooms {
+  text-align: left;
+  padding-left: 20px;
+  border: 2px solid black;
+  max-height: 70vh;
+  overflow-y: scroll;
+}
