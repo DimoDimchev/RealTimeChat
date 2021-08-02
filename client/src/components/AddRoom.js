@@ -3,7 +3,8 @@ import React from "react";
 const AddRoom = () => {
   const [name, setName] = React.useState();
 
-  const addRoom = async () => {
+  const addRoom = async (e) => {
+    e.preventDefault();
     await fetch("http://localhost:5000/rooms", {
       method: "POST",
       headers: { "Content-type": "application/json" },
