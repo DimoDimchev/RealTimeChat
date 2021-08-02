@@ -1,5 +1,6 @@
 import React from "react";
 import Room from "./Room";
+import AddRoom from "./AddRoom";
 
 const Rooms = ({ rooms, setRooms }) => {
   // render all rooms
@@ -15,6 +16,7 @@ const Rooms = ({ rooms, setRooms }) => {
   return (
     <div className="side-menu">
       <h2>All rooms</h2>
+      <AddRoom />
       <div className="rooms">
         {rooms.map((room) => (
           <Room key={room._id} name={room.name} />
