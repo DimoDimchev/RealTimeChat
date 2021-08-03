@@ -8,6 +8,8 @@ const Room = require("./models/room");
 const validateForm = require("./middlewares/validateFormMiddleware");
 
 const app = express();
+const server = require("http").createServer(app);
+const io = require("socket.io")(server, { cors: { origin: "*" } });
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -33,6 +35,6 @@ app.post("/rooms", validateForm, (req, res) => {
   res.end();
 });
 
-app.listen(5000, () => {
+server.listen(5000, () => {
   console.log("Initialized");
 });
