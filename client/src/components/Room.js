@@ -1,8 +1,8 @@
 import React from "react";
 
-const Room = ({ roomKey, name }) => {
+const Room = ({ setCurrentRoom, roomKey, name }) => {
   const connectRoom = () => {
-    console.log(`clicked ${roomKey}`);
+    setCurrentRoom(roomKey);
   };
 
   return (

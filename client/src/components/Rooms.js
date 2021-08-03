@@ -2,7 +2,7 @@ import React from "react";
 import Room from "./Room";
 import AddRoom from "./AddRoom";
 
-const Rooms = ({ alert, setAlert, rooms, setRooms }) => {
+const Rooms = ({ setCurrentRoom, alert, setAlert, rooms, setRooms }) => {
   // render all rooms
   React.useEffect(() => {
     const getRooms = async () => {
@@ -14,6 +14,7 @@ const Rooms = ({ alert, setAlert, rooms, setRooms }) => {
       return;
     }
     getRooms();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rooms, alert]);
 
   return (
@@ -22,7 +23,12 @@ const Rooms = ({ alert, setAlert, rooms, setRooms }) => {
       <AddRoom alert={alert} setAlert={setAlert} />
       <div className="rooms">
         {rooms.map((room) => (
-          <Room key={room._id} roomKey={room._id} name={room.name} />
+          <Room
+            key={room._id}
+            roomKey={room._id}
+            setCurrentRoom={setCurrentRoom}
+            name={room.name}
+          />
         ))}
       </div>
     </div>

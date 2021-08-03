@@ -1,10 +1,16 @@
 import React from "react";
 
-const ChatField = () => {
+const ChatField = ({ currentRoom }) => {
   const [inputContent, setInputContent] = React.useState();
-  const sendMessage = (e) => {
+  const sendMessage = async (e) => {
     e.preventDefault();
-    console.log(inputContent);
+    if (inputContent.length) {
+      await fetch(`http://localhost:5000/rooms/${currentRoom}`, {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({ message: inputContent, author: "Dimo" }),
+      });
+    }
   };
   return (
     <form className="chatForm">

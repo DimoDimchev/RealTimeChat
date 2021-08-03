@@ -1,7 +1,7 @@
 import React from "react";
 import ChatField from "./ChatField";
 
-const Chat = ({ messages, setMessages }) => {
+const Chat = ({ currentRoom, messages, setMessages }) => {
   return (
     <div className="chat-container">
       <h2>Chat</h2>
@@ -11,7 +11,7 @@ const Chat = ({ messages, setMessages }) => {
         ) : (
           <p>Nothing to show</p>
         )}
-        <ChatField />
+        <ChatField currentRoom={currentRoom} />
       </div>
     </div>
   );
