@@ -41,9 +41,11 @@ function App() {
       <Rooms
         alert={alert}
         setAlert={setAlert}
+        socket={socketRef}
         setCurrentRoom={setCurrentRoom}
         rooms={rooms}
         setRooms={setRooms}
+        messages={messages}
         setMessages={setMessages}
       />
       <Chat

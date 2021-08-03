@@ -3,12 +3,14 @@ import Room from "./Room";
 import AddRoom from "./AddRoom";
 
 const Rooms = ({
+  socket,
   setMessages,
   setCurrentRoom,
   alert,
   setAlert,
   rooms,
   setRooms,
+  messages,
 }) => {
   // render all rooms
   React.useEffect(() => {
@@ -31,7 +33,9 @@ const Rooms = ({
       <div className="rooms">
         {rooms.map((room) => (
           <Room
+            socket={socket}
             key={room._id}
+            messages={messages}
             setMessages={setMessages}
             roomKey={room._id}
             setCurrentRoom={setCurrentRoom}

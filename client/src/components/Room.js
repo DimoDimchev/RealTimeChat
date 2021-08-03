@@ -1,8 +1,19 @@
 import React from "react";
 
-const Room = ({ setMessages, setCurrentRoom, roomKey, name }) => {
+const Room = ({
+  messages,
+  setMessages,
+  socket,
+  setCurrentRoom,
+  roomKey,
+  name,
+}) => {
   const connectRoom = async () => {
     setCurrentRoom({ key: roomKey, name });
+    if (messages) {
+      setMessages([]);
+    }
+    socket.current.emit("joinRoom", roomKey);
   };
 
   return (

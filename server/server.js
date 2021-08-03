@@ -59,8 +59,10 @@ app.get("/rooms/:id", (req, res) => {
 });
 
 io.on("connection", (socket) => {
-  Message.find({}).then((result) => {
-    socket.emit("output-messages", result);
+  socket.on("joinRoom", (data) => {
+    Message.find({ room: data }).then((result) => {
+      socket.emit("output-messages", result);
+    });
   });
 
   socket.on("message", (data) => {
