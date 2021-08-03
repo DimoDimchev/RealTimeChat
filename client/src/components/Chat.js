@@ -1,17 +1,17 @@
 import React from "react";
 import ChatField from "./ChatField";
 
-const Chat = ({ currentRoom, messages, setMessages }) => {
+const Chat = ({ socket, currentRoom, messages }) => {
   return (
     <div className="chat-container">
-      <h2>Chat</h2>
+      <h2>{currentRoom.name}</h2>
       <div className="chat-box">
         {messages.length > 0 ? (
           messages.map((message) => <p>{message}</p>)
         ) : (
           <p>Nothing to show</p>
         )}
-        <ChatField currentRoom={currentRoom} />
+        <ChatField socket={socket} currentRoom={currentRoom} />
       </div>
     </div>
   );

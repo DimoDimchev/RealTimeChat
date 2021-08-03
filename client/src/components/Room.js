@@ -2,7 +2,7 @@ import React from "react";
 
 const Room = ({ setCurrentRoom, roomKey, name }) => {
   const connectRoom = () => {
-    setCurrentRoom(roomKey);
+    setCurrentRoom({ key: roomKey, name });
   };
 
   return (

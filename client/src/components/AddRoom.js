@@ -1,6 +1,6 @@
 import React from "react";
 
-const AddRoom = ({ alert, setAlert }) => {
+const AddRoom = ({ setAlert }) => {
   const [name, setName] = React.useState();
 
   const addRoom = async (e) => {

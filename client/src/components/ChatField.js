@@ -1,14 +1,14 @@
 import React from "react";
 
-const ChatField = ({ currentRoom }) => {
+const ChatField = ({ socket, currentRoom }) => {
   const [inputContent, setInputContent] = React.useState();
-  const sendMessage = async (e) => {
+  const sendMessage = (e) => {
     e.preventDefault();
-    if (inputContent.length) {
-      await fetch(`http://localhost:5000/rooms/${currentRoom}`, {
-        method: "POST",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify({ message: inputContent, author: "Dimo" }),
+    if (inputContent) {
+      socket.emit("message", {
+        room: currentRoom.key,
+        message: inputContent,
+        author: "Dimo",
       });
     }
   };

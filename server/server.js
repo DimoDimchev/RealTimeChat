@@ -36,20 +36,20 @@ app.post("/rooms", validateForm, (req, res) => {
 });
 
 // handle message POST to room
-app.post("/rooms/:id", (req, res) => {
-  let author = req.body["author"];
-  let message = req.body["message"];
+// app.post("/rooms/:id", (req, res) => {
+//   let author = req.body["author"];
+//   let message = req.body["message"];
 
-  Room.findOne({ _id: req.params.id }).then((room) => {
-    let generatedMessage = new Message({ author, message, room });
-    generatedMessage.save((err, res) => {
-      if (err) return console.log(err);
-    });
-  });
+//   Room.findOne({ _id: req.params.id }).then((room) => {
+//     let generatedMessage = new Message({ author, message, room });
+//     generatedMessage.save((err, res) => {
+//       if (err) return console.log(err);
+//     });
+//   });
 
-  res.status(201);
-  res.end();
-});
+//   res.status(201);
+//   res.end();
+// });
 
 app.get("/rooms/:id", (req, res) => {
   Message.find({ room: req.params.id }, (err, messages) => {
@@ -62,7 +62,16 @@ io.on("connection", (socket) => {
   console.log(socket.id);
 
   socket.on("message", (data) => {
-    socket.broadcast.emit("message", data);
+    let author = data.author;
+    let message = data.message;
+    let id = data.room;
+
+    Room.findOne({ _id: id }).then((room) => {
+      let generatedMessage = new Message({ author, message, room });
+      generatedMessage.save((err, res) => {
+        if (err) return console.log(err);
+      });
+    });
   });
 });
 

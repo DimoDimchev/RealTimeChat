@@ -4,26 +4,25 @@ import Chat from "./components/Chat";
 import io from "socket.io-client";
 
 function App() {
-  const [currentRoom, setCurrentRoom] = React.useState();
+  const [currentRoom, setCurrentRoom] = React.useState({
+    key: "",
+    name: "Chat",
+  });
   const [rooms, setRooms] = React.useState([]);
   const [messages, setMessages] = React.useState([]);
+  const [socket, setSocket] = React.useState();
   const [alert, setAlert] = React.useState(true);
+
+  React.useEffect(() => {
+    const socket = io("http://localhost:5000/");
+    setSocket(socket);
+  }, []);
 
   React.useEffect(() => {
     if (alert) {
       setAlert(false);
     }
   }, [alert]);
-
-  React.useEffect(() => {
-    const socket = io("http://localhost:5000/");
-    socket.on("connection");
-    socket.on("message", (data) => {
-      setMessages((previousMessages) => {
-        return [...previousMessages, data];
-      });
-    });
-  }, []);
 
   return (
     <div className="App">
@@ -34,11 +33,7 @@ function App() {
         rooms={rooms}
         setRooms={setRooms}
       />
-      <Chat
-        messages={messages}
-        currentRoom={currentRoom}
-        setMessages={setMessages}
-      />
+      <Chat socket={socket} messages={messages} currentRoom={currentRoom} />
     </div>
   );
 }
