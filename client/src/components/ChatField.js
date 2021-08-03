@@ -2,13 +2,15 @@ import React from "react";
 
 const ChatField = ({ socket, currentRoom }) => {
   const [inputContent, setInputContent] = React.useState();
+  const [username, setUsername] = React.useState();
+
   const sendMessage = (e) => {
     e.preventDefault();
-    if (inputContent) {
-      socket.emit("message", {
+    if (inputContent && username) {
+      socket.current.emit("message", {
         room: currentRoom.key,
         message: inputContent,
-        author: "Dimo",
+        author: username,
       });
     }
   };
@@ -18,6 +20,11 @@ const ChatField = ({ socket, currentRoom }) => {
         type="text"
         placeholder="type your message here"
         onChange={(e) => setInputContent(e.target.value)}
+      />
+      <input
+        type="text"
+        placeholder="enter your name here"
+        onChange={(e) => setUsername(e.target.value)}
       />
       <button type="submit" onClick={sendMessage}>
         Send

@@ -10,12 +10,24 @@ function App() {
   });
   const [rooms, setRooms] = React.useState([]);
   const [messages, setMessages] = React.useState([]);
-  const [socket, setSocket] = React.useState();
   const [alert, setAlert] = React.useState(true);
 
+  const socketRef = React.useRef();
+
   React.useEffect(() => {
-    const socket = io("http://localhost:5000/");
-    setSocket(socket);
+    socketRef.current = io("http://localhost:5000/");
+
+    socketRef.current.on("message", (data) => {
+      setMessages((previousMessages) => {
+        return [...previousMessages, data];
+      });
+    });
+
+    socketRef.current.on("output-messages", (data) => {
+      setMessages((previousMessages) => {
+        return [...previousMessages, ...data];
+      });
+    });
   }, []);
 
   React.useEffect(() => {
@@ -32,8 +44,14 @@ function App() {
         setCurrentRoom={setCurrentRoom}
         rooms={rooms}
         setRooms={setRooms}
+        setMessages={setMessages}
       />
-      <Chat socket={socket} messages={messages} currentRoom={currentRoom} />
+      <Chat
+        socket={socketRef}
+        messages={messages}
+        setMessages={setMessages}
+        currentRoom={currentRoom}
+      />
     </div>
   );
 }

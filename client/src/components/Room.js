@@ -1,7 +1,7 @@
 import React from "react";
 
-const Room = ({ setCurrentRoom, roomKey, name }) => {
-  const connectRoom = () => {
+const Room = ({ setMessages, setCurrentRoom, roomKey, name }) => {
+  const connectRoom = async () => {
     setCurrentRoom({ key: roomKey, name });
   };
 

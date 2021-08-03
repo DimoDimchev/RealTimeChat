@@ -2,7 +2,14 @@ import React from "react";
 import Room from "./Room";
 import AddRoom from "./AddRoom";
 
-const Rooms = ({ setCurrentRoom, alert, setAlert, rooms, setRooms }) => {
+const Rooms = ({
+  setMessages,
+  setCurrentRoom,
+  alert,
+  setAlert,
+  rooms,
+  setRooms,
+}) => {
   // render all rooms
   React.useEffect(() => {
     const getRooms = async () => {
@@ -25,6 +32,7 @@ const Rooms = ({ setCurrentRoom, alert, setAlert, rooms, setRooms }) => {
         {rooms.map((room) => (
           <Room
             key={room._id}
+            setMessages={setMessages}
             roomKey={room._id}
             setCurrentRoom={setCurrentRoom}
             name={room.name}

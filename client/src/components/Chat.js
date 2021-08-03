@@ -1,13 +1,17 @@
 import React from "react";
 import ChatField from "./ChatField";
 
-const Chat = ({ socket, currentRoom, messages }) => {
+const Chat = ({ socket, currentRoom, messages, setMessages }) => {
   return (
     <div className="chat-container">
       <h2>{currentRoom.name}</h2>
       <div className="chat-box">
         {messages.length > 0 ? (
-          messages.map((message) => <p>{message}</p>)
+          messages.map((message) => (
+            <p>
+              {message.author}: {message.message}
+            </p>
+          ))
         ) : (
           <p>Nothing to show</p>
         )}

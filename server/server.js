@@ -59,7 +59,9 @@ app.get("/rooms/:id", (req, res) => {
 });
 
 io.on("connection", (socket) => {
-  console.log(socket.id);
+  Message.find({}).then((result) => {
+    socket.emit("output-messages", result);
+  });
 
   socket.on("message", (data) => {
     let author = data.author;
@@ -71,6 +73,7 @@ io.on("connection", (socket) => {
       generatedMessage.save((err, res) => {
         if (err) return console.log(err);
       });
+      io.emit("message", generatedMessage);
     });
   });
 });
