@@ -9,9 +9,7 @@ function App() {
 
   React.useEffect(() => {
     if (alert) {
-      setTimeout(() => {
-        setAlert(false);
-      }, 500);
+      setAlert(false);
     }
   }, [alert]);
 
