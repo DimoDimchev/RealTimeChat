@@ -1,4 +1,5 @@
 import React from "react";
+import ChatField from "./ChatField";
 
 const Chat = ({ messages, setMessages }) => {
   return (
@@ -10,6 +11,7 @@ const Chat = ({ messages, setMessages }) => {
         ) : (
           <p>Nothing to show</p>
         )}
+        <ChatField />
       </div>
     </div>
   );
