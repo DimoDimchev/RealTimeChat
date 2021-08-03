@@ -32,6 +32,10 @@ body {
   padding-bottom: 30px;
 }
 
+.room {
+  cursor: pointer;
+}
+
 .rooms {
   text-align: left;
   padding-left: 20px;
