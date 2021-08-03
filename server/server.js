@@ -5,6 +5,8 @@ require("./config/dbConfig");
 
 const Room = require("./models/room");
 
+const validateForm = require("./middlewares/validateFormMiddleware");
+
 const app = express();
 
 app.use(bodyParser.json());
@@ -18,7 +20,7 @@ app.get("/", (req, res) => {
 });
 
 // create a new room
-app.post("/rooms", (req, res) => {
+app.post("/rooms", validateForm, (req, res) => {
   let roomName = req.body["roomName"];
   let generatedRoom = new Room({ name: roomName });
 
