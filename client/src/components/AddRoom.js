@@ -1,6 +1,6 @@
 import React from "react";
 
-const AddRoom = () => {
+const AddRoom = ({ alert, setAlert }) => {
   const [name, setName] = React.useState();
 
   const addRoom = async (e) => {
@@ -10,6 +10,7 @@ const AddRoom = () => {
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({ roomName: name }),
     });
+    setAlert(true);
   };
   return (
     <form className="room-form">
