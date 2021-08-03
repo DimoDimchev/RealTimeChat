@@ -1,9 +1,13 @@
 import React from "react";
 
-const Room = (props) => {
+const Room = ({ roomKey, name }) => {
+  const connectRoom = () => {
+    console.log(`clicked ${roomKey}`);
+  };
+
   return (
-    <div className="room">
-      <p>{props.name}</p>
+    <div className="room" onClick={connectRoom}>
+      <p>{name}</p>
     </div>
   );
 };

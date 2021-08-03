@@ -22,7 +22,7 @@ const Rooms = ({ alert, setAlert, rooms, setRooms }) => {
       <AddRoom alert={alert} setAlert={setAlert} />
       <div className="rooms">
         {rooms.map((room) => (
-          <Room key={room._id} name={room.name} />
+          <Room key={room._id} roomKey={room._id} name={room.name} />
         ))}
       </div>
     </div>
