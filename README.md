@@ -24,7 +24,7 @@ I implemented Socket.io in order to establish a connection between the users and
   
 ## Demo
 
-<img src="https://github.com/DimoDimchev/RealTimeChat/blob/main/demo.gif" align='center' height=400>
+<img src="https://github.com/DimoDimchev/RealTimeChat/blob/master/demo.gif" align='center' height=400>
   
 ## Installation
 
