@@ -1,4 +1,3 @@
-
 # Real-time Chat App
 
 A real-time chatting single-page application built for learning purposes using Node JS, Express JS, MongoDB, React and Socket.IO
