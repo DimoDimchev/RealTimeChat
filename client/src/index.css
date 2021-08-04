@@ -28,6 +28,7 @@ body {
   height: 80vh;
   border: 2px solid red;
   text-align: left;
+  margin-left: 30px;
   padding-left: 30px;
   padding-bottom: 30px;
   overflow-y: scroll;
@@ -49,4 +50,22 @@ body {
   display: flex;
   flex-direction: column;
   margin-bottom: 5vh;
+}
+
+@media (max-width: 480px) {
+  .App {
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  .chat-box {
+    margin-left: 0;
+  }
+
+  .side-menu {
+    width: 92vw;
+  }
+  .rooms {
+    max-height: 20vh;
+  }
 }
