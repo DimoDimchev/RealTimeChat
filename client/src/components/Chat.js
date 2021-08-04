@@ -8,9 +8,10 @@ const Chat = ({ socket, currentRoom, messages, setMessages }) => {
       <div className="chat-box">
         {messages.length > 0 ? (
           messages.map((message) => (
-            <p>
-              {message.author}: {message.message}
-            </p>
+            <div className="messageContainer">
+              <p className="author">{message.author}</p>
+              <p className="message">{message.message}</p>
+            </div>
           ))
         ) : (
           <p>Nothing to show</p>

@@ -15,7 +15,7 @@ const ChatField = ({ socket, currentRoom }) => {
     }
   };
   return (
-    <form className="chatForm">
+    <form className="chat-form">
       <input
         type="text"
         placeholder="type your message here"

@@ -1,9 +1,37 @@
+.room-form ::placeholder {
+  color: #fff;
+  padding-left: 10px;
+}
+
+.chat-form ::placeholder {
+  color: #fff;
+  padding-left: 10px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #000000;
+  border: 2px solid #555555;
+}
+
 body {
   font-family: "Helvetica";
+  padding: 0;
+  margin: 0;
 }
 
 .App {
   display: flex;
+  background-color: #1e2a33;
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-evenly;
@@ -11,11 +39,15 @@ body {
 
 .side-menu {
   flex-basis: 45%;
+  height: 100vh;
   text-align: center;
+  color: #fff;
 }
 
 .chat-container {
   flex-basis: 100%;
+  height: 100vh;
+  background-color: #fff;
   text-align: center;
 }
 
@@ -25,31 +57,118 @@ body {
   align-items: flex-start;
   justify-content: flex-end;
   max-width: 100vw;
-  height: 80vh;
-  border: 2px solid red;
+  height: 85vh;
   text-align: left;
   margin-left: 30px;
   padding-left: 30px;
-  padding-bottom: 30px;
   overflow-y: scroll;
 }
 
 .room {
   cursor: pointer;
+  transition: 200ms;
+}
+
+.room:hover {
+  color: #719677;
 }
 
 .rooms {
   text-align: left;
   padding-left: 20px;
-  border: 2px solid black;
   max-height: 70vh;
   overflow-y: scroll;
 }
 
 .room-form {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin-bottom: 5vh;
+  margin-top: 5vh;
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+
+.room-form input {
+  background-color: #808f85;
+  height: 35px;
+  border: none;
+  color: #fff;
+  border-radius: 2px;
+  width: 100%;
+  outline: none;
+  margin-right: 10px;
+  transition: 200ms;
+}
+
+.room-form button {
+  height: 37px;
+  width: 120px;
+  background-color: #91c499;
+  border: none;
+  border-radius: 2px;
+  transition: 200ms;
+  color: #fff;
+}
+
+.room-form button:hover {
+  background-color: #719677;
+}
+
+.room-form input:hover {
+  background-color: #587a5d;
+}
+
+.chat-form {
+  display: flex;
+  flex-direction: row;
+}
+
+.chat-form input {
+  background-color: #808f85;
+  height: 35px;
+  border: none;
+  color: #fff;
+  border-radius: 2px;
+  width: 100%;
+  outline: none;
+  margin-right: 10px;
+  transition: 200ms;
+}
+
+.chat-form button {
+  height: 37px;
+  width: 120px;
+  background-color: #91c499;
+  border: none;
+  border-radius: 2px;
+  transition: 200ms;
+  color: #fff;
+}
+
+.chat-form button:hover {
+  background-color: #719677;
+}
+
+.chat-form input:hover {
+  background-color: #587a5d;
+}
+
+.messageContainer {
+  text-align: left;
+}
+
+.message {
+  background-color: #f96900;
+  color: #fff;
+  margin-top: 0;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.author {
+  margin-bottom: 5px;
+  margin-top: 0;
 }
 
 @media (max-width: 480px) {
@@ -58,12 +177,23 @@ body {
     justify-content: space-evenly;
   }
 
+  .room-form {
+    margin-right: 0;
+    margin-left: 20px;
+  }
+
   .chat-box {
     margin-left: 0;
+    height: 55vh;
+  }
+
+  .messageContainer {
+    font-size: 16px;
   }
 
   .side-menu {
     width: 92vw;
+    margin-bottom: 30px;
   }
   .rooms {
     max-height: 20vh;
