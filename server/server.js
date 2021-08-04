@@ -35,29 +35,6 @@ app.post("/rooms", validateForm, (req, res) => {
   res.end();
 });
 
-// handle message POST to room
-// app.post("/rooms/:id", (req, res) => {
-//   let author = req.body["author"];
-//   let message = req.body["message"];
-
-//   Room.findOne({ _id: req.params.id }).then((room) => {
-//     let generatedMessage = new Message({ author, message, room });
-//     generatedMessage.save((err, res) => {
-//       if (err) return console.log(err);
-//     });
-//   });
-
-//   res.status(201);
-//   res.end();
-// });
-
-app.get("/rooms/:id", (req, res) => {
-  Message.find({ room: req.params.id }, (err, messages) => {
-    if (err) return console.log(error);
-    res.json(messages);
-  });
-});
-
 io.on("connection", (socket) => {
   socket.on("joinRoom", (data) => {
     Message.find({ room: data }).then((result) => {
